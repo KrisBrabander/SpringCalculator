@@ -106,11 +106,11 @@ with tab1:
     # Plot animatie
     st.subheader("🎥 Veeranimatie")
     frames = []
-veerhoogte = 1.2  # constante lengte van de veer boven het blok
+veerhoogte = 1.2  # constante lengte van de veer boven het blok  # constante lengte van de veer boven het blok
     for i in range(0, len(t), 5):
-    blok_y = -x[i]
-    veer_y = [0, blok_y]
-    veer_x = [0, 0]
+        blok_y = -x[i]
+        veer_y = [0, blok_y]
+        veer_x = [0, 0]
     frames.append(go.Frame(
             data=[
             go.Scatter(x=veer_x, y=veer_y, mode="lines", line=dict(color="gray", width=4)),
