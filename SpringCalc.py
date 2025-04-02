@@ -106,9 +106,16 @@ with tab1:
     # Plot animatie
     st.subheader("🎥 Veeranimatie")
     frames = []
+veerhoogte = 1.2  # constante lengte van de veer boven het blok
     for i in range(0, len(t), 5):
-        frames.append(go.Frame(
-            data=[go.Scatter(x=[0], y=[-x[i]], mode="markers", marker=dict(size=40, color="royalblue"))],
+    blok_y = -x[i]
+    veer_y = [0, blok_y]
+    veer_x = [0, 0]
+    frames.append(go.Frame(
+            data=[
+            go.Scatter(x=veer_x, y=veer_y, mode="lines", line=dict(color="gray", width=4)),
+            go.Scatter(x=[0], y=[blok_y], mode="markers", marker=dict(size=50, color="saddlebrown", symbol="square"))
+        ],
             name=str(i)
         ))
 
@@ -127,7 +134,10 @@ with tab1:
     )
 
     fig_anim = go.Figure(
-        data=[go.Scatter(x=[0], y=[-x[0]], mode="markers", marker=dict(size=40, color="royalblue"))],
+        data=[
+        go.Scatter(x=[0, 0], y=[0, -x[0]], mode="lines", line=dict(color="gray", width=4)),
+        go.Scatter(x=[0], y=[-x[0]], mode="markers", marker=dict(size=50, color="saddlebrown", symbol="square"))
+    ],
         layout=layout,
         frames=frames
     )
