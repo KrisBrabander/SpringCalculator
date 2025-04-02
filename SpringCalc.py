@@ -68,7 +68,7 @@ st.markdown("---")
 st.subheader("📊 Samenvatting van resultaten")
 st.write(f"**Maximale uitwijking**: {np.max(np.abs(x)):.3f} meter")
 st.write(f"**Gemiddelde uitwijking**: {np.mean(np.abs(x)):.3f} meter")
-st.write(f"**Eindtijd verplaatsing**: {x[-1]:.3f} meter")
+st.write(f"**Laatste uitwijking (na {duur}s)**: {x[-1]:.3f} meter — geeft aan hoe dicht de massa bij stilstand is")
 
 nuldoorgangen = (np.where(np.diff(np.sign(x)))[0].size) // 2
 st.write(f"**Aantal nulpassen (oscillaties)**: {nuldoorgangen}")
