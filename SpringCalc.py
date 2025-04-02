@@ -63,6 +63,27 @@ st.markdown("---")
 st.subheader("📐 Oplossingsformule")
 st.latex(formule)
 
+# Samenvatting van resultaten
+st.markdown("---")
+st.subheader("📊 Samenvatting van resultaten")
+st.write(f"**Maximale uitwijking**: {np.max(np.abs(x)):.3f} meter")
+st.write(f"**Gemiddelde uitwijking**: {np.mean(np.abs(x)):.3f} meter")
+st.write(f"**Eindtijd verplaatsing**: {x[-1]:.3f} meter")
+
+nuldoorgangen = (np.where(np.diff(np.sign(x)))[0].size) // 2
+st.write(f"**Aantal nulpassen (oscillaties)**: {nuldoorgangen}")
+
+energie_start = 0.5 * k * x0**2 + 0.5 * m * v0**2
+energie_verlies = "niet exact berekend (hangt af van c), maar energie daalt door demping"
+st.write(f"**Initiële energie**: {energie_start:.3f} J")
+st.write(f"**Energieverlies**: {energie_verlies}")
+
+if d < 0:
+    frequentie = omega / (2 * np.pi)
+    periode = 1 / frequentie
+    st.write(f"**Trillingsfrequentie**: {frequentie:.2f} Hz")
+    st.write(f"**Trillingsperiode**: {periode:.3f} s")
+
 # Plot statische grafiek
 st.markdown("---")
 st.subheader("📈 Verplaatsing in de tijd")
